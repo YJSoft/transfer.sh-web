@@ -43,11 +43,11 @@ include "includes/head.html"
                     </div>
                     <div id="terminal" class="terminal">
                         <code class="code-wrapper"><span class="code-title"># Upload using cURL</span>
-                            $ curl --upload-file ./hello.txt https://transfer.sh/hello.txt https://transfer.sh/66nb8/hello.txt
+                            $ curl --upload-file ./hello.txt https://rctsc.lastorder.xyz/hello.txt https://rctsc.lastorder.xyz/66nb8/hello.txt
 
                             <span class="code-title"># Using the shell function</span>
                             $ transfer hello.txt
-                            ##################################################### 100.0% https://transfer.sh/eibhM/hello.txt
+                            ##################################################### 100.0% https://rctsc.lastorder.xyz/eibhM/hello.txt
                         </code>
                     </div>
                     <div id="web">
@@ -93,11 +93,11 @@ include "includes/head.html"
                 </div>
                 <div class="col-md-3 col-xs-6">
                     <i class="icon-database"></i>
-                    <h3>Upload up to 10 GB</h3>
+                    <h3>Upload up to 100MB</h3>
                 </div>
                 <div class="col-md-3 col-xs-6">
                     <i class="icon-clock"></i>
-                    <h3>Files stored for 14 days</h3>
+                    <h3>Files stored forever(until someone ask to delete)</h3>
                 </div>
             </div>
             <div class="row  animated fadeInDown">
@@ -137,14 +137,14 @@ include "includes/head.html"
                     </div>
                     <div class="terminal">
                         <code class="code-wrapper"><span class="code-title"># Uploading is easy using curl</span>
-                            $ curl --upload-file ./hello.txt https://transfer.sh/hello.txt
-                            https://transfer.sh/66nb8/hello.txt
+                            $ curl --upload-file ./hello.txt https://rctsc.lastorder.xyz/hello.txt
+                            https://rctsc.lastorder.xyz/66nb8/hello.txt
 
-                            $ curl -H "Max-Downloads: 1" -H "Max-Days: 5" --upload-file ./hello.txt https://transfer.sh/hello.txt
-                            https://transfer.sh/66nb8/hello.txt
+                            $ curl -H "Max-Downloads: 1" -H "Max-Days: 5" --upload-file ./hello.txt https://rctsc.lastorder.xyz/hello.txt
+                            https://rctsc.lastorder.xyz/66nb8/hello.txt
 
                             <span class="code-title"># Download the file</span>
-                            $ curl https://transfer.sh/66nb8/hello.txt -o hello.txt
+                            $ curl https://rctsc.lastorder.xyz/66nb8/hello.txt -o hello.txt
                         </code>
                     </div>
                 </div>
@@ -154,7 +154,7 @@ include "includes/head.html"
                     </div>
                     <div class="terminal">
                         <code class="code-wrapper"><span class="code-title"># Add this to .bashrc or .zshrc or its equivalent</span>
-                            transfer(){ if [ $# -eq 0 ];then echo &quot;No arguments specified.\nUsage:\n  transfer &lt;file|directory&gt;\n  ... | transfer &lt;file_name&gt;&quot;&gt;&amp;2;return 1;fi;if tty -s;then file=&quot;$1&quot;;file_name=$(basename &quot;$file&quot;);if [ ! -e &quot;$file&quot; ];then echo &quot;$file: No such file or directory&quot;&gt;&amp;2;return 1;fi;if [ -d &quot;$file&quot; ];then file_name=&quot;$file_name.zip&quot; ,;(cd &quot;$file&quot;&amp;&amp;zip -r -q - .)|curl --progress-bar --upload-file &quot;-&quot; &quot;https://transfer.sh/$file_name&quot;|tee /dev/null,;;else cat &quot;$file&quot;|curl --progress-bar --upload-file &quot;-&quot; &quot;https://transfer.sh/$file_name&quot;|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file &quot;-&quot; &quot;https://transfer.sh/$file_name&quot;|tee /dev/null;fi;}
+                            transfer(){ if [ $# -eq 0 ];then echo &quot;No arguments specified.\nUsage:\n  transfer &lt;file|directory&gt;\n  ... | transfer &lt;file_name&gt;&quot;&gt;&amp;2;return 1;fi;if tty -s;then file=&quot;$1&quot;;file_name=$(basename &quot;$file&quot;);if [ ! -e &quot;$file&quot; ];then echo &quot;$file: No such file or directory&quot;&gt;&amp;2;return 1;fi;if [ -d &quot;$file&quot; ];then file_name=&quot;$file_name.zip&quot; ,;(cd &quot;$file&quot;&amp;&amp;zip -r -q - .)|curl --progress-bar --upload-file &quot;-&quot; &quot;https://rctsc.lastorder.xyz/$file_name&quot;|tee /dev/null,;;else cat &quot;$file&quot;|curl --progress-bar --upload-file &quot;-&quot; &quot;https://rctsc.lastorder.xyz/$file_name&quot;|tee /dev/null;fi;else file_name=$1;curl --progress-bar --upload-file &quot;-&quot; &quot;https://rctsc.lastorder.xyz/$file_name&quot;|tee /dev/null;fi;}
 
                             <span class="code-title"># Now you can use transfer function</span>
                             $ transfer hello.txt
@@ -174,11 +174,11 @@ include "includes/head.html"
                         </div>
                         <div class="terminal">
                             <code class="code-wrapper">
-                                $ curl -i -F filedata=@/tmp/hello.txt -F filedata=@/tmp/hello2.txt https://transfer.sh/
+                                $ curl -i -F filedata=@/tmp/hello.txt -F filedata=@/tmp/hello2.txt https://rctsc.lastorder.xyz/
 
                                 <span class="code-title"># Combining downloads as zip or tar archive</span>
-                                $ curl https://transfer.sh/(15HKz/hello.txt,15HKz/hello.txt).tar.gz
-                                $ curl https://transfer.sh/(15HKz/hello.txt,15HKz/hello.txt).zip
+                                $ curl https://rctsc.lastorder.xyz/(15HKz/hello.txt,15HKz/hello.txt).tar.gz
+                                $ curl https://rctsc.lastorder.xyz/(15HKz/hello.txt,15HKz/hello.txt).zip
                             </code>
                         </div>
 
@@ -190,10 +190,10 @@ include "includes/head.html"
                         </div>
                         <div class="terminal">
                             <code class="code-wrapper"><span class="code-title"># Encrypt files with password using gpg</span>
-                                $ cat /tmp/hello.txt|gpg -ac -o-|curl -X PUT --upload-file "-" https://transfer.sh/test.txt
+                                $ cat /tmp/hello.txt|gpg -ac -o-|curl -X PUT --upload-file "-" https://rctsc.lastorder.xyz/test.txt
 
                                 <span class="code-title"># Download and decrypt</span>
-                                $ curl https://transfer.sh/1lDau/test.txt|gpg -o- > /tmp/hello.txt
+                                $ curl https://rctsc.lastorder.xyz/1lDau/test.txt|gpg -o- > /tmp/hello.txt
                             </code>
                         </div>
                     </div>
@@ -207,10 +207,10 @@ include "includes/head.html"
                         <div class="terminal">
                             <code class="code-wrapper"><span class="code-title"># Scan for malware or viruses using Clamav</span>
                                 $ wget http://www.eicar.org/download/eicar.com
-                                $ curl -X PUT --upload-file ./eicar.com https://transfer.sh/eicar.com/scan
+                                $ curl -X PUT --upload-file ./eicar.com https://rctsc.lastorder.xyz/eicar.com/scan
 
                                 <span class="code-title"># Upload malware to VirusTotal, get a permalink in return</span>
-                                $ curl -X PUT --upload-file nhgbhhj https://transfer.sh/test.txt/virustotal
+                                $ curl -X PUT --upload-file nhgbhhj https://rctsc.lastorder.xyz/test.txt/virustotal
                             </code>
                         </div>
                     </div>
@@ -220,7 +220,7 @@ include "includes/head.html"
                         </div>
                         <div class="terminal">
                             <code class="code-wrapper"><span class="code-title"># Backup, encrypt and transfer</span>
-                                $ mysqldump --all-databases|gzip|gpg -ac -o-|curl -X PUT --upload-file "-" https://transfer.sh/test.txt</code>
+                                $ mysqldump --all-databases|gzip|gpg -ac -o-|curl -X PUT --upload-file "-" https://rctsc.lastorder.xyz/test.txt</code>
                         </div>
                     </div>
                 </div>
@@ -243,9 +243,9 @@ include "includes/head.html"
                             <code class="code-wrapper"><span class="code-title"># Import keys from keybase</span>
                                 $ keybase track [them]
                                 <span class="code-title"># Encrypt for recipient(s)</span>
-                                $ cat somebackupfile.tar.gz | keybase encrypt [them] | curl --upload-file '-' https://transfer.sh/test.txt
+                                $ cat somebackupfile.tar.gz | keybase encrypt [them] | curl --upload-file '-' https://rctsc.lastorder.xyz/test.txt
                                 <span class="code-title"># Decrypt</span>
-                                $ curl https://transfer.sh/sqUFi/test.md |keybase decrypt
+                                $ curl https://rctsc.lastorder.xyz/sqUFi/test.md |keybase decrypt
                             </code>
                         </div>
                     </div>
@@ -257,7 +257,7 @@ include "includes/head.html"
                         </div>
                         <div class="terminal">
                             <code class="code-wrapper"><span class="code-title"># wget</span>
-                                $ wget --method PUT --body-file=/tmp/file.tar https://transfer.sh/file.tar -O - -nv
+                                $ wget --method PUT --body-file=/tmp/file.tar https://rctsc.lastorder.xyz/file.tar -O - -nv
                             </code>
                         </div>
                     </div>
@@ -267,7 +267,7 @@ include "includes/head.html"
                         </div>
                         <div class="terminal">
                             <code class="code-wrapper"><span class="code-title"># grep syslog for pound and transfer</span>
-                                $ cat /var/log/syslog|grep pound|curl --upload-file - https://transfer.sh/pound.log
+                                $ cat /var/log/syslog|grep pound|curl --upload-file - https://rctsc.lastorder.xyz/pound.log
                             </code>
                         </div>
                     </div>
@@ -280,7 +280,7 @@ include "includes/head.html"
                         </div>
                         <div class="terminal">
                             <code class="code-wrapper"><span class="code-title"># Upload using Powershell</span>
-                                PS H:\&gt; invoke-webrequest -method put -infile .\file.txt https://transfer.sh/file.txt
+                                PS H:\&gt; invoke-webrequest -method put -infile .\file.txt https://rctsc.lastorder.xyz/file.txt
                             </code>
                         </div>
                     </div>
@@ -290,32 +290,7 @@ include "includes/head.html"
                         </div>
                         <div class="terminal">
                             <code class="code-wrapper"><span class="code-title"># HTTPie</span>
-                                $ http https://transfer.sh/ -vv &lt; /tmp/test.log
-                            </code>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <h3>Upload a file using Unofficially client in Python</h3>
-                        <div class="terminal-top">
-                        </div>
-                        <div class="terminal">
-                            <code class="code-wrapper">
-                                <span class="code-title"># transfersh-cli (https://github.com/tanrax/transfersh-cli)</span>
-                                $ trasnfersh photos.zip
-                                <span class="code-title"># Uploading file</span>
-                                <span class="code-title"># Download from here: https://transfer.sh/xxxxxx/photos.zip</span>
-                                <span class="code-title"># It has also been copied to the clipboard!</span>
-                            </code>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <h3>Send us your awesome example</h3>
-                        <div class="terminal-top">
-                        </div>
-                        <div class="terminal">
-                            <code class="code-wrapper"><span class="code-title"># Your awesome sample will be put here</span>
+                                $ http https://rctsc.lastorder.xyz/ -vv &lt; /tmp/test.log
                             </code>
                         </div>
                     </div>
@@ -334,62 +309,6 @@ include "includes/head.html"
             <iframe src="https://ghbtns.com/github-btn.html?user=dutchcoders&repo=transfer.sh&type=watch&count=true&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="200" height="50"></iframe>
         </div>
     </section>
-    <section id="reviews">
-        <div class="wrapper">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-2 col-xs-12">
-                    <blockquote class="twitter-tweet tweet-xl" lang="en">
-                        <a href="https://twitter.com/FloifyDave/status/517383101425516544">
-                            <img class="twitter-profile" src="images/reviews/dave.jpg" alt="">
-                        </a>
-                        <p><a href="https://twitter.com/dutchcoders">@dutchcoders</a> Thanks for transfer.sh. Just used it for a production purpose for a customer. So great, so easy, so https. :)</p>
-                        <a href="https://twitter.com/FloifyDave/status/517383101425516544">
-                                &mdash; Dave Sims (@FloifyDave)</a>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <blockquote class="twitter-tweet" lang="en">
-                        <a href="https://twitter.com/kareemk/status/517029789191118849">
-                            <img class="twitter-profile" src="images/reviews/kareem.jpg" alt="">
-                        </a>
-                        <p><a href="https://twitter.com/dutchcoders">@dutchcoders</a> love transfer.sh! any change we can *pay* for a self-hosted version?</p><a href="https://twitter.com/kareemk/status/517029789191118849">&mdash; Kareem Kouddous (@kareemk) </a>
-                    </blockquote>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                    <blockquote class="twitter-tweet" lang="en">
-                        <a href="https://twitter.com/drakpz/status/517008058841829376">
-                            <img class="twitter-profile" src="images/reviews/pg.jpeg" alt="">
-                        </a>
-                        <p><a href="http://t.co/JomAmqWYEB">http://t.co/JomAmqWYEB</a> by <a href="https://twitter.com/dutchcoders">@dutchcoders</a> is pure awesomeness! any chance of source on github? :-)</p><a href="https://twitter.com/drakpz/status/517008058841829376">&mdash; PJ Spagnolatti (@drakpz)</a>
-                    </blockquote>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 col-xs-12">
-                    <blockquote class="twitter-tweet" lang="en">
-                        <a href="https://twitter.com/jacoblindgren11/status/516975006501203968">
-                            <img class="twitter-profile" src="images/reviews/jacob.jpg" alt="">
-                        </a>
-                        <p>Love transfer.sh! Will be using it from now on! Thanks for the amazing service we can use from the CLI <a href="https://twitter.com/dutchcoders">@dutchcoders</a>
-                        </p><a href="https://twitter.com/jacoblindgren11/status/516975006501203968">&mdash; Jacob Lindgren (@jacoblindgren11) </a>
-                    </blockquote>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                    <blockquote class="twitter-tweet" lang="en">
-                        <a href="https://twitter.com/arvestad/status/519507976491499521">
-                            <img class="twitter-profile" src="images/reviews/lars.jpg" alt="">
-                        </a>
-                        <p>transfer.sh is my latest fav service! Try simple command-line and web file sharing! <a href="https://t.co/FSrsb1JKJd">https://t.co/FSrsb1JKJd</a>&#10;Thanks <a href="https://twitter.com/dutchcoders">@dutchcoders</a> !</p> <a href="https://twitter.com/arvestad/status/519507976491499521">&mdash; Lars Arvestad (@arvestad)</a>
-                    </blockquote>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
     <section id="share">
         <div class="wrapper">
             <h2 class="page-title">Share the love</h2>
@@ -421,14 +340,6 @@ include "includes/head.html"
                 Any questions?
             </h2>
             <a href="#" data-uv-trigger class="btn-cta">contact us</a>
-        </div>
-    </section>
-    <section id="tor">
-        <div class="wrapper">
-            <a href="https://www.torproject.org"><img src="images/tor.svg" alt="">
-            </a>
-            <br/>
-            <a href="http://jxm5d6emw5rknovg.onion/">http://jxm5d6emw5rknovg.onion/</a>
         </div>
     </section>
 
